@@ -70,6 +70,11 @@ namespace CdnBundle
             return getLocalFilePath(localUrl);
         }
 
+        public string getRelativePath()
+        {
+            return getRelativePath(localUrl);
+        }
+
         public static string getLocalFilePath(string localUrl)
         {
             string localUrlPath = localUrl;
@@ -81,7 +86,7 @@ namespace CdnBundle
             return localUrlPath ?? "";
         }
 
-        public static string getResolvePath(string localUrl)
+        public static string getRelativePath(string localUrl)
         {
             string localUrlPath = localUrl;
             if (HttpContext.Current != null && HttpContext.Current.Server != null && localUrl.StartsWith("~"))

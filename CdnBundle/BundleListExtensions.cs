@@ -60,12 +60,12 @@ namespace CdnBundle
                 if (bundles.All((b) => b.type == Bundle.BundleType.CSS))
                 {
                     // css link stylesheet
-                    return "<link href=\"" + Bundle.getResolvePath(localUrl) + "\" type=\"text/css\"" + (async ? " async" : "") + " rel =\"stylesheet\" />";
+                    return "<link href=\"" + Bundle.getRelativePath(localUrl) + "\" type=\"text/css\"" + (async ? " async" : "") + " rel =\"stylesheet\" />";
                 }
                 else
                 {
                     //js script tag
-                    return "<script src=\"" + Bundle.getResolvePath(localUrl) + "\" type=\"text/javascript\"" + (async ? " async" : "") + "></script>";
+                    return "<script src=\"" + Bundle.getRelativePath(localUrl) + "\" type=\"text/javascript\"" + (async ? " async" : "") + "></script>";
                 }
             }
             else
@@ -115,8 +115,8 @@ namespace CdnBundle
                 }
                 else if (!String.IsNullOrEmpty(bundle.localUrl))
                 {
-                    if (bundle.type == Bundle.BundleType.CSS) sb.AppendLine("<link href=\"" + bundle.getLocalFilePath() + "\" type=\"text/css\"" + " rel =\"stylesheet\" />");
-                    else sb.AppendLine("<script src=\"" + bundle.getLocalFilePath() + "\" type=\"text/javascript\"></script>");
+                    if (bundle.type == Bundle.BundleType.CSS) sb.AppendLine("<link href=\"" + bundle.getRelativePath() + "\" type=\"text/css\"" + " rel =\"stylesheet\" />");
+                    else sb.AppendLine("<script src=\"" + bundle.getRelativePath() + "\" type=\"text/javascript\"></script>");
                 }
             }
             return sb.ToString();
